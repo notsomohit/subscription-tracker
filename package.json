@@ -1,0 +1,30 @@
+{
+  "name": "subscription-tracker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/notsomohit/subscription-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/notsomohit/subscription-tracker/issues"
+  },
+  "homepage": "https://github.com/notsomohit/subscription-tracker#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0"
+  }
+}
