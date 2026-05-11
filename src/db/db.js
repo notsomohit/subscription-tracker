@@ -1,0 +1,18 @@
+import mongoose from "mongoose";
+import {DB_URI,NODE_ENV} from "../../config/env.js"
+import { configDotenv } from "dotenv";
+
+if(!DB_URI){
+    throw new Error("please define the DB_URI environment variable inside .env.<development>.local");
+};
+
+const connectDB = async() =>{
+    try {
+        await mongoose.connect(DB_URI);
+        console.log("you've succesfully connected to the database")
+    } catch (error) {
+        console.error("error connecting to database",error);
+    }
+};
+
+export default connectDB;

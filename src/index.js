@@ -1,7 +1,9 @@
 import app from './app.js';
-
+import connectDB from './db/db.js';
 const port = process.env.PORT;
 
-app.listen(port,()=>{
-    console.log(`subscription tracker api is listening on port:${port}`);
+app.listen(port,async()=>{
+    console.log(`you're listening to Subscription Tracker API on port:${port}`);
+    await connectDB();
 });
+
