@@ -15,7 +15,7 @@ const subscriptionSchema = new mongoose.Schema(
             min:[0,"price must be greater than 0"],
         },
         currency:{
-            type: Number,
+            type: String,
             enum: ["USD","EUR","RS"],
             default: "USD",
         },
@@ -28,7 +28,7 @@ const subscriptionSchema = new mongoose.Schema(
             enum: ["sports","news","entertainment","lifestyle","technology","finance","politics"],
             required: true,
         },
-        payementMethod:{
+        paymentMethod:{
             type:String,
             required: true,
             trim:true,
@@ -51,7 +51,7 @@ const subscriptionSchema = new mongoose.Schema(
             required: true,
             validate: {
                 validator: (value) => value > this.startDate,
-                message:"start date must be in the past",
+                message:"Renewal date must be after the start date",
             }
         },
         user:{
@@ -73,7 +73,7 @@ subscriptionSchema.pre("save",function(next){
         };
         
         this.renewalDate = new Date(this.startDate);
-        this.renewalDate.setDate(this.renewalDate.getDate() + renewalPeriods[this.renewalPeriods]);
+        this.renewalDate.setDate(this.renewalDate.getDate() + renewalPeriods[this.frequency]);
     };
 
     if(this.renewalDate < new Date()){
@@ -82,6 +82,6 @@ subscriptionSchema.pre("save",function(next){
     next();
 });
 
-const Subcription = mongoose.model("Subscription",subscriptionSchema);
+const Subscription = mongoose.model("Subscription",subscriptionSchema);
 
-export default Subcription;
+export default Subscription;
