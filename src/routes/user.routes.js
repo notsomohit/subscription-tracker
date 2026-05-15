@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getUser, getUsers } from "../controllers/user.controller.js";
+import { getUser, getUsers, createUser } from "../controllers/user.controller.js";
 import { authorize } from "../middlewares/auth.middleware.js";
 
 const userRouter = Router();
@@ -9,9 +9,8 @@ userRouter.get("/",authorize,getUsers);
 userRouter.get("/:id",authorize,getUser);
 
 
-userRouter.post("/",(req,res) => {
-    res.send({title:"create a new user"});
-});
+//create a new user{later add only for admins}
+userRouter.post("/",createUser);
 
 userRouter.put("/:id",(req,res) => {
     res.send({title:"update user"});
