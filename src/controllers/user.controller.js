@@ -39,7 +39,7 @@ export const createUser = async(req,res,next) => {
         }
 
         //hash password
-        const salt = bcrypt.genSalt(10);
+        const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password,salt);
 
         const user = await  User.create([{name,email,password: hashedPassword}]);
@@ -48,7 +48,6 @@ export const createUser = async(req,res,next) => {
             success: true,
             message: "user created successfully",
             data:{
-                token,
                 user
             }
         });
